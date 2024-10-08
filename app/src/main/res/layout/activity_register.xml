@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".modules.mail.views.RegisterActivity">
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,14 +32,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email_label" />
+            android:text="@string/username_label" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="@string/my_email_randred_com" />
+            android:hint="@string/my_username" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,27 +54,26 @@
             android:hint="@string/password_hint"
             android:inputType="textPassword" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_your_password_label" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_edit_password_confirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword" />
+
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
-            android:text="@string/login"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/link_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/i_haven_t_account_yet_register_now"
-            android:autoLink="web"
-            android:clickable="true"
-            android:textColor="@color/blue"
-            android:linksClickable="true"
-            android:textAlignment="center"/>
+            android:text="@string/register_button"
+            android:textColor="@android:color/white" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

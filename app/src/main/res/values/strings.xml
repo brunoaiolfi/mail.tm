@@ -9,4 +9,6 @@
     <string name="mail_tm">Mail.tm</string>
     <string name="username_label">Username *</string>
     <string name="my_username">My_username</string>
+    <string name="login">Login</string>
+    <string name="i_haven_t_account_yet_register_now">I haven\'t account yet. Register now!</string>
 </resources>
