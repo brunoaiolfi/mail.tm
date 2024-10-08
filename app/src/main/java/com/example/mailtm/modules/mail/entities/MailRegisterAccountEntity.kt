@@ -2,7 +2,7 @@ package com.example.mailtm.modules.mail.entities
 
 import com.google.gson.annotations.SerializedName
 
-data class MailAccountEntity (
+data class MailRegisterAccountEntity (
     @SerializedName("@context")
     var _context: String,
 

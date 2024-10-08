@@ -16,9 +16,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,15 +31,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email_label" />
+            android:text="@string/username_label" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_edit_email"
+            android:id="@+id/txt_edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="@string/my_email_randred_com"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/my_username" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="@string/password_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
     </LinearLayout>
 
     <Button
