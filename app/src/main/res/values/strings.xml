@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">mail.tm</string>
+    <string name="email_label">Email *</string>
+    <string name="my_email_randred_com">my_email@randred.com</string>
+    <string name="password_label">Password *</string>
+    <string name="password_hint">****</string>
+    <string name="confirm_your_password_label">Confirm your password *</string>
+    <string name="register_button">Register</string>
+    <string name="mail_tm">Mail.tm</string>
 </resources>
