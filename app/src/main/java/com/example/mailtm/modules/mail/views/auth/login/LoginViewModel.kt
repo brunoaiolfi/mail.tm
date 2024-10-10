@@ -1,6 +1,5 @@
-package com.example.mailtm
+package com.example.mailtm.modules.mail.views.auth.login
 
-import DomainEntity
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -11,18 +10,18 @@ import com.example.mailtm.modules.domain.repository.DomainRepository
 import com.example.mailtm.modules.mail.repositories.MailAuthenticationRepository
 import com.example.mailtm.modules.mail.services.MailAuthenticationService
 
-class MainActivityViewModelFactory(
+class LoginActivityViewModelFactory(
     private val application: Application,
-    private val mainActivityProps: MainActivityProps
+    private val loginActivityProps: LoginActivityProps
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainActivityViewModel(application, mainActivityProps) as T
+        return LoginViewModel(application, loginActivityProps) as T
     }
 }
 
-class MainActivityViewModel(
+class LoginViewModel(
     application: Application,
-    private val mainActivityProps: MainActivityProps
+    private val loginActivityProps: LoginActivityProps
 ) : AndroidViewModel(application) {
 
     private val mailRepository = MailAuthenticationRepository;
@@ -31,7 +30,7 @@ class MainActivityViewModel(
     val isLoading: LiveData<Boolean> = _isLoading;
 
     fun login(username: String, password: String) {
-        if (username.isEmpty() || password.isEmpty()) return mainActivityProps.showToast(
+        if (username.isEmpty() || password.isEmpty()) return loginActivityProps.showToast(
             "Please fill all fields"
         );
 
@@ -46,7 +45,7 @@ class MainActivityViewModel(
                 TODO("Implement success callback")
             },
             {
-                mainActivityProps.showToast(it);
+                loginActivityProps.showToast(it);
             }
         );
     };

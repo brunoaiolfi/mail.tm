@@ -1,4 +1,4 @@
-package com.example.mailtm.modules.mail.views
+package com.example.mailtm.modules.mail.views.auth.register
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mailtm.MainActivityViewModel
 import com.example.mailtm.modules.domain.repository.DomainRepository
 import com.example.mailtm.modules.mail.repositories.MailAuthenticationRepository
 import com.example.mailtm.modules.mail.services.MailAuthenticationService
@@ -27,8 +26,23 @@ class RegisterActivityViewModel(
 
     private val mailRepository = MailAuthenticationRepository;
     private val domainRepository = DomainRepository;
-    private val _isLoading = MutableLiveData<Boolean>(false);
+
+    private val _isLoading = MutableLiveData(false);
     val isLoading: LiveData<Boolean> = _isLoading;
+
+    private val _domain = MutableLiveData("Loading ...");
+    val domain: LiveData<String> = _domain;
+
+    fun getDomain() {
+        domainRepository.getDomains(
+            cb = { domain ->
+                _domain.value = "@${domain.members[0].domain}";
+            },
+            cbError = { message ->
+                registerActivityProps.showToast(message);
+            }
+        );
+    }
 
     fun register(username: String, password: String, passwordConfirmation: String) {
         _isLoading.value = true;
@@ -39,31 +53,21 @@ class RegisterActivityViewModel(
         if (password != passwordConfirmation) return registerActivityProps.showToast("Passwords do not match");
         if (username.contains("@")) return registerActivityProps.showToast("Username cannot contain '@'");
 
-        domainRepository.getDomains(
-            cb = { domain ->
-                val dto = MailAuthenticationService.MailRegisterAccountDTO(
-                    "$username@${domain.members[0].domain}",
-                    password
-                );
+        val dto = MailAuthenticationService.MailRegisterAccountDTO(
+            "$username${domain.value}",
+            password
+        );
 
-                mailRepository.register(
-                    dto,
-                    {
-                        registerActivityProps.showToast("Account created successfully");
-                        registerActivityProps.returnToLogin();
-                    },
-                    {
-                        registerActivityProps.showToast(it);
-                        _isLoading.value = false;
-                    }
-                );
+        mailRepository.register(
+            dto,
+            {
+                registerActivityProps.showToast("Account created successfully");
+                registerActivityProps.returnToLogin();
             },
-            cbError = { message ->
-                registerActivityProps.showToast(message);
+            {
+                registerActivityProps.showToast(it);
                 _isLoading.value = false;
             }
         );
-
-
     };
-}
+};

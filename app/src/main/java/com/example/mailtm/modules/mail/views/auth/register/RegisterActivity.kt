@@ -1,4 +1,4 @@
-package com.example.mailtm.modules.mail.views
+package com.example.mailtm.modules.mail.views.auth.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +25,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, RegisterActi
         binding = ActivityRegisterBinding.inflate(layoutInflater);
         setContentView(binding.root);
 
+        viewModel.getDomain();
+
         bindings();
         observers();
     }
@@ -48,6 +50,10 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, RegisterActi
     fun observers() {
         viewModel.isLoading.observe(this, {
             binding.progressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE;
+        })
+
+        viewModel.domain.observe(this, {
+            binding.txtEmailDomain.text = it;
         })
     }
 

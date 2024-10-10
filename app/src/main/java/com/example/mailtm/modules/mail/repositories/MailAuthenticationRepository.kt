@@ -23,6 +23,7 @@ class MailAuthenticationRepository {
                     call: Call<MailRegisterAccountEntity>,
                     response: retrofit2.Response<MailRegisterAccountEntity>
                 ) {
+                    print(dto)
                     if (!response.isSuccessful) return cbError(response.message());
 
                     val mailAccountEntity = response.body();
