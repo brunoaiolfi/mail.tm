@@ -30,32 +30,23 @@ class MainActivityViewModel(
     private val _isLoading = MutableLiveData<Boolean>(false);
     val isLoading: LiveData<Boolean> = _isLoading;
 
-    fun register(username: String, password: String, passwordConfirmation: String) {
-        if (username.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) return mainActivityProps.showToast(
+    fun login(username: String, password: String) {
+        if (username.isEmpty() || password.isEmpty()) return mainActivityProps.showToast(
             "Please fill all fields"
         );
-        if (password != passwordConfirmation) return mainActivityProps.showToast("Passwords do not match");
-        if (username.contains("@")) return mainActivityProps.showToast("Username cannot contain '@'");
 
-        domainRepository.getDomains(
-            cb = { domain ->
-                val dto = MailAuthenticationService.MailRegisterAccountDTO(
-                    "$username@${domain.members[0].domain}",
-                    password
-                );
+        val dto = MailAuthenticationService.MailRegisterAccountDTO(
+            username,
+            password
+        );
 
-                mailRepository.register(
-                    dto,
-                    {
-                        TODO("Implement success callback")
-                    },
-                    {
-                        mainActivityProps.showToast(it);
-                    }
-                );
+        mailRepository.login(
+            dto,
+            {
+                TODO("Implement success callback")
             },
-            cbError = { message ->
-                mainActivityProps.showToast(message);
+            {
+                mainActivityProps.showToast(it);
             }
         );
     };

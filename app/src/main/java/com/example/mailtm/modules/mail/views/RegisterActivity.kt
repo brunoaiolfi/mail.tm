@@ -5,11 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.example.mailtm.MainActivityProps
-import com.example.mailtm.MainActivityViewModel
-import com.example.mailtm.MainActivityViewModelFactory
 import com.example.mailtm.R
-import com.example.mailtm.databinding.ActivityMainBinding
 import com.example.mailtm.databinding.ActivityRegisterBinding
 
 interface RegisterActivityProps {

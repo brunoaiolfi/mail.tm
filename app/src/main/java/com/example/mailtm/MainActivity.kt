@@ -6,11 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.mailtm.databinding.ActivityMainBinding
 import com.example.mailtm.modules.mail.views.RegisterActivity
-import kotlin.properties.ReadWriteProperty
-import kotlin.reflect.KProperty
 
 interface MainActivityProps {
     fun showToast(message: String);
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainActivityProp
     }
 
     fun bindings() {
-//        binding.btnRegister.setOnClickListener(this);
+        binding.btnLogin.setOnClickListener(this);
         binding.linkRegister.setOnClickListener(this);
     }
 
@@ -41,6 +38,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainActivityProp
             R.id.link_register -> {
                 val intent = Intent(this, RegisterActivity::class.java);
                 startActivity(intent);
+            }
+
+            R.id.btn_login -> {
+                val address = binding.txtEditEmail.text.toString();
+                val password = binding.txtEditPassword.text.toString();
+
+                viewModel.login(address, password);
             }
         }
     }

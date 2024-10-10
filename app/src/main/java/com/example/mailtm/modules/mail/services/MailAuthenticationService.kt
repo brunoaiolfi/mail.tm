@@ -14,4 +14,7 @@ interface MailAuthenticationService {
 
     @POST("accounts")
     fun registerAccount(@Body() request: MailRegisterAccountDTO): Call<MailRegisterAccountEntity>
+
+    @POST("/token")
+    fun login(@Body() request: MailRegisterAccountDTO): Call<Any>
 }

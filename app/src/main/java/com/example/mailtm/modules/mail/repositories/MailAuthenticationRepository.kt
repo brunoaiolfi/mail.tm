@@ -34,5 +34,29 @@ class MailAuthenticationRepository {
                 }
             })
         }
+
+        fun login(
+            dto: MailAuthenticationService.MailRegisterAccountDTO,
+            cb: (Any) -> Unit,
+            cbError: (message: String) -> Unit
+        ) {
+            val call: Call<Any> = remote.login(dto);
+
+            call.enqueue(object : retrofit2.Callback<Any> {
+                override fun onResponse(
+                    call: Call<Any>,
+                    response: retrofit2.Response<Any>
+                ) {
+                    if (!response.isSuccessful) return cbError(response.message());
+
+                    val token = response.body();
+
+                }
+
+                override fun onFailure(call: Call<Any>, t: Throwable) {
+                    cbError(t.message.toString());
+                }
+            })
+        }
     }
 }
