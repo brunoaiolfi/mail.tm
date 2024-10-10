@@ -74,6 +74,12 @@
             android:backgroundTint="@color/black"
             android:text="@string/register_button"
             android:textColor="@android:color/white" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:visibility="invisible"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

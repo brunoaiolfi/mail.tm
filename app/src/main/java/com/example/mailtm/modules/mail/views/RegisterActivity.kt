@@ -14,6 +14,7 @@ import com.example.mailtm.databinding.ActivityRegisterBinding
 
 interface RegisterActivityProps {
     fun showToast(message: String);
+    fun returnToLogin();
 }
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener, RegisterActivityProps {
@@ -29,6 +30,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, RegisterActi
         setContentView(binding.root);
 
         bindings();
+        observers();
     }
 
     fun bindings() {
@@ -47,7 +49,17 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, RegisterActi
         }
     }
 
+    fun observers() {
+        viewModel.isLoading.observe(this, {
+            binding.progressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE;
+        })
+    }
+
     override fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    override fun returnToLogin() {
+        finish();
     }
 }

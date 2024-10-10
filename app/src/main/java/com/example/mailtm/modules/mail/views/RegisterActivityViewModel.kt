@@ -31,6 +31,8 @@ class RegisterActivityViewModel(
     val isLoading: LiveData<Boolean> = _isLoading;
 
     fun register(username: String, password: String, passwordConfirmation: String) {
+        _isLoading.value = true;
+
         if (username.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) return registerActivityProps.showToast(
             "Please fill all fields"
         );
@@ -47,16 +49,21 @@ class RegisterActivityViewModel(
                 mailRepository.register(
                     dto,
                     {
-                        TODO("Implement success callback")
+                        registerActivityProps.showToast("Account created successfully");
+                        registerActivityProps.returnToLogin();
                     },
                     {
                         registerActivityProps.showToast(it);
+                        _isLoading.value = false;
                     }
                 );
             },
             cbError = { message ->
                 registerActivityProps.showToast(message);
+                _isLoading.value = false;
             }
         );
+
+
     };
 }
