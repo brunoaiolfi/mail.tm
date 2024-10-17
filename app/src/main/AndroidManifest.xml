@@ -14,11 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mailtm"
         tools:targetApi="31">
+
         <activity
-            android:name=".modules.splash.SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".modules.mail.views.dashboard.DashboardActivity"
+            android:name=".modules.mail.views.inbox.DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".modules.auth.views.auth.register.RegisterActivity"
@@ -27,7 +25,7 @@
             android:name=".modules.auth.views.auth.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".modules.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
