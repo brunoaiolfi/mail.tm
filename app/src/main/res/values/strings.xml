@@ -10,5 +10,5 @@
     <string name="username_label">Username *</string>
     <string name="my_username">My_username</string>
     <string name="login">Login</string>
-    <string name="i_haven_t_account_yet_register_now">I haven\'t an account yet. Register now!</string>
+    <string name="register_now">Register now!</string>
 </resources>

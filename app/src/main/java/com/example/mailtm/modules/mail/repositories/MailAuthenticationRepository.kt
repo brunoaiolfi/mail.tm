@@ -1,6 +1,7 @@
 package com.example.mailtm.modules.mail.repositories
 
 import com.example.mailtm.infra.RetrofitClient
+import com.example.mailtm.modules.mail.entities.AuthenticationEntity
 import com.example.mailtm.modules.mail.entities.MailRegisterAccountEntity
 import com.example.mailtm.modules.mail.services.MailAuthenticationService
 import retrofit2.Call
@@ -38,23 +39,24 @@ class MailAuthenticationRepository {
 
         fun login(
             dto: MailAuthenticationService.MailRegisterAccountDTO,
-            cb: (Any) -> Unit,
+            cb: (AuthenticationEntity) -> Unit,
             cbError: (message: String) -> Unit
         ) {
-            val call: Call<Any> = remote.login(dto);
+            val call: Call<AuthenticationEntity> = remote.login(dto);
 
-            call.enqueue(object : retrofit2.Callback<Any> {
+            call.enqueue(object : retrofit2.Callback<AuthenticationEntity> {
                 override fun onResponse(
-                    call: Call<Any>,
-                    response: retrofit2.Response<Any>
+                    call: Call<AuthenticationEntity>,
+                    response: retrofit2.Response<AuthenticationEntity>
                 ) {
                     if (!response.isSuccessful) return cbError(response.message());
 
                     val token = response.body();
 
+                    cb(token!!);
                 }
 
-                override fun onFailure(call: Call<Any>, t: Throwable) {
+                override fun onFailure(call: Call<AuthenticationEntity>, t: Throwable) {
                     cbError(t.message.toString());
                 }
             })

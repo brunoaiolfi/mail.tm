@@ -68,7 +68,7 @@
             android:id="@+id/link_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/i_haven_t_account_yet_register_now"
+            android:text="@string/register_now"
             android:autoLink="web"
             android:clickable="true"
             android:textColor="@color/blue"

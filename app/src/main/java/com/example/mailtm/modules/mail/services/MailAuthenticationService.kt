@@ -1,5 +1,6 @@
 package com.example.mailtm.modules.mail.services
 
+import com.example.mailtm.modules.mail.entities.AuthenticationEntity
 import com.example.mailtm.modules.mail.entities.MailRegisterAccountEntity
 import retrofit2.Call
 import retrofit2.http.Body
@@ -16,5 +17,5 @@ interface MailAuthenticationService {
     fun registerAccount(@Body() request: MailRegisterAccountDTO): Call<MailRegisterAccountEntity>
 
     @POST("/token")
-    fun login(@Body() request: MailRegisterAccountDTO): Call<Any>
+    fun login(@Body() request: MailRegisterAccountDTO): Call<AuthenticationEntity>
 }

@@ -25,11 +25,12 @@ class LoginViewModel(
 ) : AndroidViewModel(application) {
 
     private val mailRepository = MailAuthenticationRepository;
-    private val domainRepository = DomainRepository;
-    private val _isLoading = MutableLiveData<Boolean>(false);
+    private val _isLoading = MutableLiveData(false);
     val isLoading: LiveData<Boolean> = _isLoading;
 
     fun login(username: String, password: String) {
+        _isLoading.value = true;
+
         if (username.isEmpty() || password.isEmpty()) return loginActivityProps.showToast(
             "Please fill all fields"
         );
@@ -42,10 +43,12 @@ class LoginViewModel(
         mailRepository.login(
             dto,
             {
-                TODO("Implement success callback")
+                _isLoading.value = false;
+                loginActivityProps.loginCallback(it);
             },
             {
                 loginActivityProps.showToast(it);
+                _isLoading.value = false;
             }
         );
     };

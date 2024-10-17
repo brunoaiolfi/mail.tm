@@ -9,10 +9,12 @@ import androidx.activity.viewModels
 import com.example.mailtm.R
 import com.example.mailtm.databinding.ActivityLoginBinding
 import com.example.mailtm.databinding.ActivityMainBinding
+import com.example.mailtm.modules.mail.entities.AuthenticationEntity
 import com.example.mailtm.modules.mail.views.auth.register.RegisterActivity
 
 interface LoginActivityProps {
     fun showToast(message: String);
+    fun loginCallback(authenticationEntity: AuthenticationEntity);
 }
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginActivityProps {
@@ -28,11 +30,24 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginActivityPr
         setContentView(binding.root);
 
         bindings();
+        observer();
     }
 
     fun bindings() {
         binding.btnLogin.setOnClickListener(this);
         binding.linkRegister.setOnClickListener(this);
+    }
+
+    fun observer() {
+        viewModel.isLoading.observe(this, {
+            if (it) {
+                binding.btnLogin.isEnabled = false;
+                binding.btnLogin.text = "Loading...";
+            } else {
+                binding.btnLogin.isEnabled = true;
+                binding.btnLogin.text = "Login";
+            }
+        });
     }
 
     override fun onClick(view: View?) {
@@ -53,5 +68,26 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginActivityPr
 
     override fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    override fun loginCallback(authenticationEntity: AuthenticationEntity) {
+        saveToken(authenticationEntity.token);
+        saveUserId(authenticationEntity.id);
+    }
+
+    private fun saveToken(token: String) {
+        val sharedPref = getSharedPreferences("mailtm", MODE_PRIVATE);
+        val editor = sharedPref.edit();
+
+        editor.putString("token", token);
+        editor.apply();
+    }
+
+    private fun saveUserId(userId: String) {
+        val sharedPref = getSharedPreferences("mailtm", MODE_PRIVATE);
+        val editor = sharedPref.edit();
+
+        editor.putString("userId", userId);
+        editor.apply();
     }
 }
