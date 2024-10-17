@@ -1,9 +1,9 @@
-package com.example.mailtm.modules.mail.repositories
+package com.example.mailtm.modules.auth.repositories
 
 import com.example.mailtm.infra.RetrofitClient
-import com.example.mailtm.modules.mail.entities.AuthenticationEntity
-import com.example.mailtm.modules.mail.entities.MailRegisterAccountEntity
-import com.example.mailtm.modules.mail.services.MailAuthenticationService
+import com.example.mailtm.modules.auth.entities.AuthenticationEntity
+import com.example.mailtm.modules.auth.entities.MailRegisterAccountEntity
+import com.example.mailtm.modules.auth.services.MailAuthenticationService
 import retrofit2.Call
 
 class MailAuthenticationRepository {

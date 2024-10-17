@@ -15,13 +15,17 @@
         android:theme="@style/Theme.Mailtm"
         tools:targetApi="31">
         <activity
-            android:name="com.example.mailtm.modules.mail.views.auth.register.RegisterActivity"
+            android:name=".modules.splash.SplashActivity"
             android:exported="false" />
-
         <activity
-            android:name=".modules.mail.views.auth.login.LoginActivity"
+            android:name=".modules.mail.views.dashboard.DashboardActivity"
             android:exported="false" />
-        
+        <activity
+            android:name=".modules.auth.views.auth.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modules.auth.views.auth.login.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

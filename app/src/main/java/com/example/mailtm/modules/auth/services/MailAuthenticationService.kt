@@ -1,7 +1,7 @@
-package com.example.mailtm.modules.mail.services
+package com.example.mailtm.modules.auth.services
 
-import com.example.mailtm.modules.mail.entities.AuthenticationEntity
-import com.example.mailtm.modules.mail.entities.MailRegisterAccountEntity
+import com.example.mailtm.modules.auth.entities.AuthenticationEntity
+import com.example.mailtm.modules.auth.entities.MailRegisterAccountEntity
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

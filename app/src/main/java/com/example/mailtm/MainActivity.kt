@@ -3,12 +3,8 @@ package com.example.mailtm
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
 import com.example.mailtm.databinding.ActivityMainBinding
-import com.example.mailtm.modules.mail.views.auth.login.LoginActivity
-import com.example.mailtm.modules.mail.views.auth.register.RegisterActivity
+import com.example.mailtm.modules.auth.views.auth.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding;

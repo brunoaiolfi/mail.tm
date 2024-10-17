@@ -1,4 +1,4 @@
-package com.example.mailtm.modules.mail.entities
+package com.example.mailtm.modules.auth.entities
 
 import com.google.gson.annotations.SerializedName
 

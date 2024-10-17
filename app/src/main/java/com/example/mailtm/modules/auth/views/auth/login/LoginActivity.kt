@@ -1,4 +1,4 @@
-package com.example.mailtm.modules.mail.views.auth.login
+package com.example.mailtm.modules.auth.views.auth.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.mailtm.R
 import com.example.mailtm.databinding.ActivityLoginBinding
-import com.example.mailtm.databinding.ActivityMainBinding
-import com.example.mailtm.modules.mail.entities.AuthenticationEntity
-import com.example.mailtm.modules.mail.views.auth.register.RegisterActivity
+import com.example.mailtm.modules.auth.entities.AuthenticationEntity
+import com.example.mailtm.modules.auth.views.auth.register.RegisterActivity
 
 interface LoginActivityProps {
     fun showToast(message: String);

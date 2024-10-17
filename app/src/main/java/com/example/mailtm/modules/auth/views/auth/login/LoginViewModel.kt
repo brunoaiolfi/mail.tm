@@ -1,4 +1,4 @@
-package com.example.mailtm.modules.mail.views.auth.login
+package com.example.mailtm.modules.auth.views.auth.login
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mailtm.modules.domain.repository.DomainRepository
-import com.example.mailtm.modules.mail.repositories.MailAuthenticationRepository
-import com.example.mailtm.modules.mail.services.MailAuthenticationService
+import com.example.mailtm.modules.auth.repositories.MailAuthenticationRepository
+import com.example.mailtm.modules.auth.services.MailAuthenticationService
 
 class LoginActivityViewModelFactory(
     private val application: Application,

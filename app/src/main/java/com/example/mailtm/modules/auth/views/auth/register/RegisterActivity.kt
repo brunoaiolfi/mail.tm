@@ -1,4 +1,4 @@
-package com.example.mailtm.modules.mail.views.auth.register
+package com.example.mailtm.modules.auth.views.auth.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
